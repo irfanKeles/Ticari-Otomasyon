@@ -1,0 +1,40 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<YorumPuan>
+
+
+<table class="table table-striped" style="width:100%">
+    @using (Html.BeginForm())
+    {
+        <tr>
+            <td colspan="4">
+                <input type="text" name="ara" class="form-control" placeholder="Ara ..." style="width:90%; float:left;" />
+                <button class="btn btn-icon btn-primary" data-toggle="tooltip"
+                        data-placement="top" data-original-title="ARA" style="float:right">
+                    <i class="feather icon-search"></i>
+                </button>
+            </td>
+        </tr>
+    }
+    <thead>
+        <tr>
+            <th scope="col">Fotoğraf</th>
+            <th scope="col">Ürün Ad</th>
+            <th scope="col" style="max-width: 50px;">Yorum İçeriği</th>
+            <th scope="col" style="text-align:center">Yorum Tarihi / Puan</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            @Html.Hidden(@item.YpID.ToString())
+            <tr>
+                <td style="vertical-align:middle;"><img src="@item.Urunlerim.UrunFoto" width="50" height="50" class="rounded-circle my-n1"></td>
+                <td style="vertical-align:middle;">@item.Urunlerim.UrunAd</td>
+                <td style="vertical-align:middle; text-align:center;">@item.Yorum</td>
+                <td style="vertical-align:middle; text-align:center;">@item.YorumT.ToString("dd/MM/yyyy") / @item.Puan</td>
+            </tr>
+        }
+
+    </tbody>
+</table>

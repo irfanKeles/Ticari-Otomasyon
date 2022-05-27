@@ -1,0 +1,32 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Satislar>
+
+
+<div style="min-width:100%;">
+    <table class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="col">Müşteri Fotoğraf</th>
+                <th scope="col">İsim Soyisim</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Satış Tarih</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                @Html.Hidden(@item.PersonelID.ToString())
+                <input style="visibility:hidden;" type="text" value="@ViewBag.id" />
+                <tr>
+                    <td style="vertical-align:middle;"><img src="@item.Musteriler.MusteriFoto" width="50" height="50" class="rounded-circle my-n1"></td>
+                    <td style="vertical-align:middle;">@item.Musteriler.MusteriAD @item.Musteriler.MusteriSoyad</td>
+                    <td style="vertical-align:middle;">@item.Urunlerim.UrunAd</td>
+                    <td style="vertical-align:middle;">@item.SatisTarihi.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @*@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("SatisGecmis", new { sayfa}))*@
+</div>

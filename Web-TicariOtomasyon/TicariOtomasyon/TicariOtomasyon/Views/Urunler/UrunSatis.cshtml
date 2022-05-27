@@ -1,0 +1,92 @@
+﻿@model TicariOtomasyon.Models.Concrete.Satislar
+@{
+    ViewBag.Title = "UrunSatis";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 style="display:block;">SATIŞ YAP</h3>
+@using (Html.BeginForm("UrunSatis", "Urunler", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.UrunID)
+    <table class="table table-hover table-bordered" style="background-color:white; max-width:1000px;">
+        <tr>
+            <th scope="col" style="vertical-align:middle;"> Ürün</th>
+            <td><input type="text" name="UrunID" class="form-control" value="@ViewBag.Did" readonly /></td>
+        </tr>
+        <tr>
+            <th scope="col" style="vertical-align:middle;"> Müşteri</th>
+            <td>@Html.TextBoxFor(x => x.MusteriID, new { @class = "form-control", @style = "background-color:#3333;" })</td>
+        </tr>
+        <tr>
+            <th scope="col" style="vertical-align:middle;"> Personel</th>
+            <td>@Html.DropDownListFor(x => x.PersonelID, (List<SelectListItem>)ViewBag.per, new { @class = "form-control", @style = "background-color:#3333;" })</td>
+        </tr>
+        <tr>
+            <th scope="col" style="vertical-align:middle;"> Adet</th>
+            <td>
+                @Html.TextBoxFor(x => x.SatisAdet, new { @class = "form-control", @style = "background-color:#3333;" })
+                @Html.ValidationMessageFor(x => x.SatisAdet, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <th scope="col" style="vertical-align:middle;"> İşlemler</th>
+            <td><button class="btn btn-primary">Satış Ekle</button></td>
+        </tr>
+    </table>
+}
+@*<h3 style="display:block;">Satış Yap</h3>
+    @using (Html.BeginForm("UrunSatis", "Urunler", FormMethod.Post))
+    {
+        @Html.HiddenFor(x => x.UrunID)
+        <table class="table table-hover table-bordered" style="background-color:white; max-width:1000px;">
+            <tr>
+                <th scope="col" style="vertical-align:middle;"> Ürün No / İsim</th>
+                <td>
+                    <label>@ViewBag.Dad</label>
+                    <label>@ViewBag.Did</label>
+                    <input type="text" name="UrunID" value="@ViewBag.Did" class="form-control" disabled />
+                </td>
+            </tr>
+            <tr>
+                <th scope="col" style="vertical-align:middle;"> Müşteri</th>
+                <td>@Html.TextBoxFor(x => x.MusteriID, new { @class = "form-control", @style = "background-color:#3333;" })</td>
+            </tr>
+            <tr>
+                <th scope="col" style="vertical-align:middle;"> Personel</th>
+                <td>@Html.DropDownListFor(x => x.PersonelID, (List<SelectListItem>)ViewBag.per, new { @class = "form-control", @style = "background-color:#3333;" })</td>
+            </tr>
+            <tr>
+                <th scope="col" style="vertical-align:middle;"> Satış Fiyat</th>
+                <td>
+                    <input type="text" id="satisF" name="SatisFiyat" value="@ViewBag.Dfiyat" onkeyup="sum();" class="form-control" style="background-color:#3333;" disabled />
+                    @Html.ValidationMessageFor(x => x.SatisFiyat, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <th scope="col" style="vertical-align:middle;"> Adet</th>
+                <td><input type="number" onchange="sum();" min="1" id="Sadet" name="SatisAdet" onkeyup="sum();" class="form-control" style="background-color:#3333;" /></td>
+            </tr>
+            <tr>
+                <th scope="col" style="vertical-align:middle;"> Toplam Tutar</th>
+                <td><input type="text" id="SToplamT" name="SatisToplamFiyat" class="form-control" style="background-color:#3333;" disabled /></td>
+            </tr>
+            <tr>
+                <th scope="col" style="vertical-align:middle;"> İşlemler</th>
+                <td><button class="btn btn-primary">Satış Ekle</button></td>
+            </tr>
+        </table>
+    }
+    <script>
+        function sum() {
+            var s1 = document.getElementById('satisF').value;
+            var s2 = document.getElementById('Sadet').value;
+            var sonuc = parseInt(s1) * parseInt(s2);
+            if (!isNaN(sonuc)) {
+                document.getElementById('SToplamT').value = sonuc;
+            }
+        }
+    </script>*@
+
+
+
+

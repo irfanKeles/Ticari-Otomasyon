@@ -1,0 +1,59 @@
+﻿@model TicariOtomasyon.Models.Concrete.Faturalar
+@{
+    ViewBag.Title = "Ggetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 style="display:block;">Fatura Düzenle</h3>
+@using (@Html.BeginForm("FGuncelle", "Fatura", FormMethod.Post))
+{
+    <div class="auth-content">
+        <hr />
+        <div class="form-group" style="max-width:600px; margin:0 auto;">
+            <div style="width:auto; padding:5px 0px;">
+                @Html.HiddenFor(x=>x.FaturaID)
+                @Html.HiddenFor(x => x.FaturaSaat)
+                @Html.HiddenFor(x => x.FaturaTarih)
+                @Html.HiddenFor(x => x.FaturDurum)
+                @Html.HiddenFor(x => x.ToplamTutar)
+                @Html.Label("Fatura Seri No", new { @class = "text-c-blue", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.FaturaSeriNO, new { @class = "form-control", @style = "background-color:white;" })
+                @Html.ValidationMessageFor(x => x.FaturaSeriNO, "", new { @class = "text-danger" })
+            </div>
+            <div style="width:auto; padding:5px 0px;">
+                @Html.Label("Fatura Sıra No", new { @class = "text", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.FaturaSıraNo, new { @class = "form-control", @style = "background-color:white;" })
+                @Html.ValidationMessageFor(x => x.FaturaSıraNo, "", new { @class = "text-danger" })
+            </div>
+            <div style="width:auto; padding:5px 0px;">
+                @Html.Label("Vergi Dairesi", new { @class = "text", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.FaturaVergiDairesi, new { @class = "form-control", @style = "background-color:white;" })
+                @Html.ValidationMessageFor(x => x.FaturaVergiDairesi, "", new { @class = "text-danger" })
+            </div>
+            <div style="width:auto; padding:5px 0px;">
+                @Html.Label("Fatura Kesen", new { @class = "text", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.FaturKesen, new { @class = "form-control", @style = "background-color:white;" })
+                @Html.ValidationMessageFor(x => x.FaturKesen, "", new { @class = "text-danger" })
+            </div>
+            <div style="width:auto; padding:5px 0px;">
+                @Html.Label("Fatura Alan", new { @class = "text", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.FaturAlan, new { @class = "form-control", @style = "background-color:white;" })
+                @Html.ValidationMessageFor(x => x.FaturAlan, "", new { @class = "text-danger" })
+            </div>
+            <div style="margin:15px 0px">
+                <button class="btn btn-success">Düzenle</button>
+            </div>
+        </div>
+    </div>
+}
+

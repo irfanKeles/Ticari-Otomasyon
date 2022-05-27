@@ -1,0 +1,75 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<Yapilacaklar>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/BSAdminSimpleT/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/BSAdminSimpleT/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <section class="content" >
+        <div class="container-fluid" >
+            <!--KARTLAR-->
+            @*<div class="row">
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>150</h3>
+
+                                <p>New Orders</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fa fa-shopping-bag"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                </div>*@
+            <!--KART BİTİŞ-->
+            <!-- LİST BAŞLANGICI-->
+            <div class="row" >
+                <section class="col-lg-7 connectedSortable" >
+                    <div class="card" style="background-color:rebeccapurple; min-width:500px;">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                <i class="fa fa-clipboard-list"></i>
+                                Yapılacaklar
+                            </h3>
+                        </div>
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="card-body">
+                                <ul class="todo-list" data-widget="todo-list">
+                                    <li>
+                                        <div class="icheck-primary d-inline ml-2">
+                                            <input type="checkbox" value="" name="todo1" id="todoCheck1">
+                                            <label for="todoCheck1"></label>
+                                        </div>
+                                        @Html.Hidden(item.YapilacakID.ToString())
+                                        <span class="text">@item.YIcerik</span>
+                                        @*<small class="badge badge-danger"><i class="far fa-clock"></i> 2 mins</small>*@
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        <!-- /.card-body -->
+
+                    </div>
+                </section>
+
+            </div>
+            <!-- LİST BİTİŞ-->
+        </div>
+    </section>
+    <!-- jQuery -->
+    <script src="~/BSAdminSimpleT/plugins/jquery/jquery.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/BSAdminSimpleT/dist/js/adminlte.js"></script>
+</body>
+</html>

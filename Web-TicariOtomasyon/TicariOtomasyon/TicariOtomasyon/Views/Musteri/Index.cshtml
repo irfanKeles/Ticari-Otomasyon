@@ -1,0 +1,96 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Musteriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@*<div class="alert alert-primary" role="alert"> Personel Adı:</div>*@
+
+<div class="container">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-xl-8" style="min-width:100%;">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-actions float-right">
+                            <div class="dropdown show">
+                                <div style="float:right; margin:15px 0;">
+                                    <a href="/Musteri/MusteriEkle" class="btn btn-outline-primary">
+                                        Müşteri Ekle
+                                        <i class="feather icon-plus" style="margin:3px 7px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="card-title mb-0">Müşteri Listesi</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped" style="width:100%">
+                            @using (Html.BeginForm())
+                            {
+                                <tr>
+                                    <td colspan="5">
+                                        <input type="text" name="ara" class="form-control" placeholder="Ara ..." style="width:93%; float:left;" />
+                                        <button class="btn btn-icon btn-primary" data-toggle="tooltip"
+                                                data-placement="top" data-original-title="ARA" style="float:left">
+                                            <i class="feather icon-search"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                            <thead>
+                                <tr>
+                                    <th scope="col">Fotoğraf</th>
+                                    <th scope="col">İsim Soyisim</th>
+                                    <th scope="col" style="text-align:center">Mail</th>
+                                    <th scope="col" style="text-align:center">Tel No</th>
+                                    <th scope="col" style="vertical-align:middle; text-align:center;">İşemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    @Html.Hidden(@item.MusteriID.ToString())
+                                    <tr>
+                                        <td style="vertical-align:middle;"><img src="@item.MusteriFoto" width="50" height="50" class="rounded-circle my-n1"></td>
+                                        <td style="vertical-align:middle;">@item.MusteriAD @item.MusteriSoyad</td>
+                                        <td style="vertical-align:middle; text-align:center;">@item.MusteriMail</td>
+                                        <td style="vertical-align:middle; text-align:center;">@item.MusteriTelNo</td>
+                                        <td style="vertical-align:middle; text-align:center; width:100px;">
+                                            <div style="display:inline-flex;">
+                                                <a href="/Musteri/MSil/@item.MusteriID" class="btn btn-icon btn-danger" data-toggle="tooltip"
+                                                   data-placement="top" data-original-title="SİL">
+                                                    <i class="feather icon-trash-2" style="margin:3px 7px;"></i>
+                                                </a>
+                                            </div>
+                                            <div style="display:inline-flex;">
+                                                <a href="/Musteri/MGetir/@item.MusteriID" class="btn btn-icon btn-success" data-toggle="tooltip"
+                                                   data-placement="top" data-original-title="DÜZENLE">
+                                                    <i class="feather icon-edit-2" style="margin:3px 7px;"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }),
+                       new PagedListRenderOptions
+                            {
+                           LiElementClasses = new List<string> { "page-link" }
+                       }
+                   )
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

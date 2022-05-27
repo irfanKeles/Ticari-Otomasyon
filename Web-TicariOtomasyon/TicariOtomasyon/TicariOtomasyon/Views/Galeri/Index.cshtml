@@ -1,0 +1,15 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<Urunlerim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="~/Content/MyCss/MyStyle.css" rel="stylesheet" />
+<div class="con">
+    @foreach (var item in Model)
+    {
+        <img src="@item.UrunFoto" />
+    }
+</div>
+
+

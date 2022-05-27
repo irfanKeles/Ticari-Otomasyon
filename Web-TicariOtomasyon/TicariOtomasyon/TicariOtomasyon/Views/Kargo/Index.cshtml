@@ -1,0 +1,142 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<KargoDetay>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<style>
+    .kargo {
+        width: 100%;
+        height: 400px;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-image: url('../../Bootstrap/dist/assets/images/slider/truck-icon.png');
+        padding: 70px 0;
+    }
+
+    .icerik {
+        width: 250px;
+        height: vh:inherit;
+        margin: 0 0 0 260px;
+        background-color: #151515;
+        float: left
+    }
+
+        .icerik > input {
+            color: white;
+        }
+
+            .icerik > input:focus {
+                color: black;
+            }
+
+    .buton {
+        float: right;
+        margin: 75px 90px 0 0;
+    }
+</style>
+<div class="container">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-xl-8" style="min-width:80%; margin:0px 10%;">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-actions float-right">
+                            <div class="dropdown show">
+
+
+                            </div>
+                        </div>
+                        <h3>Kargo Takip Listesi</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <button type="button" style="border-radius:20px; float:right; padding:11px 15px; margin-bottom:5px;" class="btn  btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"> Yeni Kargo <i class="fa fa-plus" style="margin-left:5px;"></i></button>
+                            <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+                                <a href="#close" title="Close" class="modal-close-btn">X</a>
+                            </div>
+                            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title h4" id="myLargeModalLabel"> Yeni Kargo</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            @using (Html.BeginForm("kargoEkle", "Kargo", FormMethod.Post))
+                                            {
+                                                <div class="kargo">
+                                                    <div class="icerik">
+                                                        <input type="text" class="form-control" value=" @ViewBag.sonuc" placeholder="Takip Kodu" name="TakipKodu" style="background-color: #151515;" readonly />
+                                                        <input type="text" class="form-control" placeholder="Açıklama" name="Aciklama" />
+                                                        <input type="text" class="form-control" placeholder="Alıcı" name="Alici" />
+                                                        <input type="text" class="form-control" placeholder="Personel" name="Personel" />
+                                                        <input type="date" name="Tarih" class="form-control" />
+                                                    </div>
+                                                    <div class="buton">
+                                                        <button class="btn btn-dark" style="border-radius:100%; padding:25px 30px;">  <i class="fa fa-arrow-right "></i></button>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            @using (Html.BeginForm())
+                            {
+                                <tr>
+                                    <td colspan="5">
+                                        <input type="text" name="ara" class="form-control" placeholder="Ara ..." style="width:93%; float:left;" />
+                                        <button class="btn btn-icon btn-primary" data-toggle="tooltip"
+                                                data-placement="top" data-original-title="ARA" style="float:left">
+                                            <i class="feather icon-search"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Takip Kodu</th>
+                                    <th scope="col">Personel</th>
+                                    <th scope="col">Alıcı</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col" style="width:100px; vertical-align:middle; text-align:center;">İşemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    @Html.Hidden(@item.KTid.ToString())
+                                    <tr>
+                                        <td style="vertical-align:middle;">@item.TakipKodu</td>
+                                        <td style="vertical-align:middle;">@item.Personel</td>
+                                        <td style="vertical-align:middle;">@item.Alici</td>
+                                        <td style="vertical-align:middle;">@item.Tarih.ToShortDateString()</td>
+                                        <td style="vertical-align:middle; text-align:center;">
+                                            <div style="display:inline-flex; margin-left:13px;">
+                                                <a href="/Kargo/kargoTakip/@item.TakipKodu" class="btn btn-icon btn-primary" data-toggle="tooltip"
+                                                   data-placement="top" data-original-title="GÖRÜNTÜLE">
+                                                    <i class="feather icon-eye" style="margin:4px 7px;"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <div style="display:inline-flex"> @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }),
+                       new PagedListRenderOptions
+                       {
+                           LiElementClasses = new List<string> { "page-link" }
+                       })</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

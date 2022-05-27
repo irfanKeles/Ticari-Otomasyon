@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div style="margin:0px 10%;">
+    @using (Html.BeginForm("Index", "QR", FormMethod.Post))
+    {
+        <div style="display:inline-flex;">
+            <input type="text" name="kod" class="form-control" style="background-color:white; width:700px;"/>
+            <input type="submit" value="QR Kod'a Dönüştür" class="btn btn-primary"/>
+        </div>
+    }
+    <br />
+    @if (ViewBag.qr != null)
+    {
+        <img src="@ViewBag.qr" style="margin:0 0 0 250px; width:400px; height:400px;" alt="" />
+    }
+</div>
+
+

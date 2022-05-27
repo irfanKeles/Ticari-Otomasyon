@@ -1,0 +1,172 @@
+﻿@model TicariOtomasyon.Models.Concrete.Personel
+@{
+    ViewBag.Title = "pGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<link href="~/Content/MyCss/ProfileDetail.css" rel="stylesheet" />
+@using (Html.BeginForm("pGuncelle", "Personeller", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.PersonelID)
+    <div class="container">
+        <h3 style="margin:0 0 20px 0;">PERSONEL DETAY</h3>
+        <div class="row gutters">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12" style="max-height:300px;">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="account-settings">
+                            <div class="user-profile">
+                                <div class="user-avatar">
+                                    <img src="@ViewBag.img">
+                                </div>
+
+                                <h3 class="user-name" style="margin:0;">@ViewBag.veri</h3>
+                                <div class="about">
+                                    <h5>@ViewBag.dep</h5>
+                                </div>
+                                <hr />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h4 class="mb-2 text-primary">Bigi</h4>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("İsim")
+                                    @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control", @style = "background-color:#3333; padding:0 15px;" })
+                                    @Html.ValidationMessageFor(x => x.PersonelAd, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Soyisim")
+                                    @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control", @style = "background-color:#3333; padding:0 15px;" })
+                                    @Html.ValidationMessageFor(x => x.PersonelSoyad, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Tel No")
+                                    @Html.TextBoxFor(x => x.PersonelTelNo, new { @class = "form-control", @style = "background-color:#3333; padding:0 15px;" })
+                                    @Html.ValidationMessageFor(x => x.PersonelTelNo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Mail")
+                                    @Html.TextBoxFor(x => x.PersonelMail, new { @class = "form-control", @style = "background-color:#3333; padding:0 15px;" })
+                                    @Html.ValidationMessageFor(x => x.PersonelMail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Şifre")
+                                    @Html.TextBoxFor(x => x.PersonelSifre, new { @class = "form-control", @type = "password", @style = "background-color:#3333; padding:0 15px;" })
+                                    @Html.ValidationMessageFor(x => x.PersonelSifre, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Doğum T")
+                                    <input type="date" name="PersonelDT" class="form-control" style="background-color:#3333;" />
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Departman")
+                                    @Html.DropDownListFor(x => x.DepartmanID, (List<SelectListItem>)ViewBag.d1, new { @class = "form-control", @style = "background-color:#3333; padding:0 15px;" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Fotoğraf")
+                                    <input type="file" name="PersonelFoto" class="form-control" style="background-color:#3333; padding:8px 0;" />
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Cimsiyet")
+                                    <div style=" margin:8px auto; padding-left:40px;">
+                                        <span style="padding:3px; font-size:20px;">Bayan<i style="margin:0 7px;" class="fa fa-female"></i> @Html.RadioButtonFor(x => x.Cinsiyet, "true")</span>
+                                        <span style="padding:3px; margin-left:50px; font-size:20px;">Erkek<i style="margin:0 10px;" class="fa fa-male"></i>  @Html.RadioButtonFor(x => x.Cinsiyet, "false")</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Çalışma Durumu")
+                                    <div style="margin:8px auto; padding-left:40px;">
+                                        <span style="padding:3px; font-size:20px;">Aktif<i style="margin:0 7px;" class="fa fa-check-circle"></i> @Html.RadioButtonFor(x => x.PersonelDurum, "true")</span>
+                                        <span style="padding:3px; margin-left:50px; font-size:20px;">Pasif<i style="margin:0 10px;" class="fa fa-times-circle"></i>  @Html.RadioButtonFor(x => x.PersonelDurum, "false")</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <h6 class="mt-3 mb-2 text-primary">Addres</h6>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Sehir")
+                                    @Html.DropDownListFor(x => x.SehirID, (List<SelectListItem>)ViewBag.Sehir, "Sehir Seçiniz", new { @class = "form-control", @style = "background-color:#3333; padding:0 15px;" })
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    @Html.Label("Adres")
+                                    @Html.TextAreaFor(x => x.PersonelAdres, new { @class = "form-control", @style = "background-color:#3333; padding:5px 15px;" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <button class="btn btn-primary">Güncelle</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row gutters">
+                            <section class="py-5" style="min-width:100%;">
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="card-body">
+
+                                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"> Satış Geçmişi</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Genel Satış Ortalaması</a>
+                                                </li>
+                                            </ul>
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                                                    @Html.Action("SatisGecmis", "Personeller")
+
+                                                </div>
+                                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                                    @Html.Action("GenelSatisOrt", "Personeller")
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

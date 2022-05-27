@@ -1,0 +1,168 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<Urunlerim>
+@{
+    ViewBag.Title = "urunDetay";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<body>
+    <section class="bg-light">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-lg-5 mt-5">
+                    <div class="card mb-3">
+                        <img class="card-img img-fluid" src="@item.UrunFoto" id="product-detail">
+                    </div>
+                </div>
+                <div class="col-lg-7 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h2">@item.UrunAd</h1>
+                            <ul class="list-unstyled pb-3">
+                                <li>@item.UrunBilgi</li>
+                            </ul>
+                            <span class="h3 py-2" style="margin:0 15px 0 0; ">Alış: @item.UrunAlisFiyat</span>
+                            <span class="h3 py-2">Satış: @item.UrunSatisFiyat</span>
+                            <p class="py-2">
+                                <div class="progress progress-xs" style="max-width:25%;margin:10px 0">
+                                    <div class="progress-bar bg-primary" style="width:@Convert.ToInt16(ViewBag.avg)%"></div>
+                                </div>
+                                <span class="list-inline-item text-dark">Yorum: @ViewBag.sum / Paun: @ViewBag.avg</span>
+                            </p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Marka:</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong>@item.Markalar.MarkaAd</strong></p>
+                                </li>
+                            </ul>
+
+
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Stok</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <h6><span class="badge bg-success" style="font-size:12px; padding:5px; color:white;">Var</span></h6>
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <h6>Renk</h6>
+                                </li>
+                                <li class="list-inline-item">
+                                    <p class="text-muted"><strong>yok</strong></p>
+                                </li>
+                            </ul>
+
+                            <form action="" method="GET">
+                                <input type="hidden" name="product-title" value="Activewear">
+                                <div class="row">
+
+                                    <div class="row pb-3">
+                                        <div class="col d-grid">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </section>
+
+    <section class="py-5">
+        <div class="container" style="padding:0px">
+            <div class="row text-left p-2 pb-3">
+                <section class="py-5" style="min-width:100%;">
+                    <div class="container">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"> Ürün Hakkında</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Yorumlar / Puanlar</a>
+                                    </li>
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                        <!-- alşsdlşasdlasdjklsa -->
+                                        @ViewBag.UHakkında
+                                        <!-- alşsdlşasdlasdjklsa -->
+                                    </div>
+                                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                        @Html.Action("Yorumlar", "Urunler")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <script src="~/BSDetail/assets/js/jquery-1.11.0.min.js"></script>
+    <script src="~/BSDetail/assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="~/BSDetail/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/BSDetail/assets/js/templatemo.js"></script>
+    <script src="~/BSDetail/assets/js/custom.js"></script>
+
+
+    <script src="~/BSDetail/assets/js/slick.min.js"></script>
+    <script>
+        $('#carousel-related-product').slick({
+            infinite: true,
+            arrows: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            dots: true,
+            responsive: [{
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 3
+                }
+            }
+            ]
+        });
+    </script>
+    <!-- End Slider Script -->
+
+</body>
+
+</html>
+

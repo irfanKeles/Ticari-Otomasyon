@@ -1,0 +1,105 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<Kategoriler>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="container">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-xl-8" style="min-width:80%; margin:0px 10%;">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="card-actions float-right">
+                            <div class="dropdown show">
+
+
+                            </div>
+                        </div>
+                        <h3>Kategori Listesi</h3>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            @using (@Html.BeginForm("KategoriEkle", "Kategoriler", FormMethod.Post))
+                            {
+                                <div style=" min-width:100%; display:inline-flex; margin:5px;">
+                                    <div style="min-width:85%;">
+                                        <input type="text" name="KategoriAd" class="form-control" style="background-color:#3333; height:45px;" />
+                                        @Html.ValidationMessage("KategoriAd", "", new { @class = "text-danger", @style = "display:inline-block;" })
+                                    </div>
+                                    <div style="display:inline-flex; margin:0 0 0 5px;">
+                                        <button class="btn btn-primary" style="height:45px; border-radius:10px;">
+                                            <i class="fa fa-plus" style="margin:0 7px;"></i>
+                                            Ekle
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+                            @using (Html.BeginForm())
+                            {
+                                <tr>
+                                    <td colspan="7">
+                                        <input type="text" name="ara" class="form-control" placeholder="Ara ..." style="width:93%; float:left;" />
+                                        <button class="btn btn-icon btn-primary" data-toggle="tooltip"
+                                                data-placement="top" data-original-title="ARA" style="float:left">
+                                            <i class="feather icon-search"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kategori Adı</th>
+                                    <th scope="col">Kategori Durum</th>
+                                    <th scope="col" style="width:100px; vertical-align:middle; text-align:center;">İşemler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    @Html.Hidden(@item.KategoriID.ToString())
+                                    <tr>
+                                        <td style="vertical-align:middle;">@item.KategoriAd</td>
+                                        <td style="vertical-align:middle;">
+                                            @if (item.KategoriDurum == true)
+                                            {<span class="badge bg-success" style="padding:5px;"> Aktif</span>}
+                                            else
+                                            { <span class="badge bg-danger" style="padding:5px;"> Pasif</span>}
+                                        </td>
+                                        <td style="vertical-align:middle; text-align:center;">
+                                            <div style="display:inline-flex;">
+                                                <a href="/Kategoriler/KategoriSil/@item.KategoriID" class="btn btn-icon btn-danger" data-toggle="tooltip"
+                                                   data-placement="top" data-original-title="SİL">
+                                                    <i class="feather icon-trash-2" style="margin:3px 7px;"></i>
+                                                </a>
+                                            </div>
+                                            <div style="display:inline-flex;">
+                                                <a href="/Kategoriler/KategoriGetir/@item.KategoriID" class="btn btn-icon btn-primary" data-toggle="tooltip"
+                                                   data-placement="top" data-original-title="GÖRÜNTÜLE">
+                                                    <i class="feather icon-eye" style="margin:4px 7px;"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }),
+                       new PagedListRenderOptions
+                       {
+                           LiElementClasses = new List<string> { "page-link" }
+                       })
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

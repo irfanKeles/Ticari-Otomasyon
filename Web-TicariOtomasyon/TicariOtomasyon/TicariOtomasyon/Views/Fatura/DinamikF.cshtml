@@ -1,0 +1,62 @@
+﻿@model TicariOtomasyon.Models.IEnumerable.GlobalIEnumerable
+@{
+    ViewBag.Title = "DinamikF";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<br />
+<br />
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="row">
+            <h2 class="panel-title pull-left" style="margin-left:10px;">
+                <strong>Order Details</strong>
+            </h2>
+            <button style="margin-right:10px" class="btn btn-primary pull-right" onclick="addNewOrder()">New Order</button>
+        </div>
+    </div>
+
+    @*fatura lisetesi*@
+    @foreach (var item in Model.Ifaturalar)
+    {
+        <div class="panel-body">
+            <table class="table table-striped table-responsive">
+                <tbody>
+                    <tr>
+                        @Html.Hidden(item.FaturaID.ToString())
+                        <td>Seri Sıra No : @item.FaturaSeriNO @item.FaturaSıraNo </td>
+                        <td>Tarih : @item.FaturaTarih </td>
+                        <td>Vergi Diresi: @item.FaturaVergiDairesi </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th>Açıklama</th>
+                                        <th>Miktar</th>
+                                        <th>Fiyat</th>
+                                    </tr>
+                                    @{
+                                        var totalBill = 0;
+                                    }
+                                    @foreach (var order in item.faturaIceriks)
+                                    {
+                                        <tr>
+                                            <td>@order.FaturaAcıklama</td>
+                                            <td>@order.FaturaMiktar</td>
+                                            <td>@order.FaturaBirimFiyat</td>
+                                        </tr>
+                                        totalBill = totalBill + @Convert.ToInt32(order.FaturaTutar);
+                                    }
+                                </tbody>
+                            </table>
+                            <span class="pull-right" style="margin-right:100px;"><strong>Total Bill :  </strong> @totalBill</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+

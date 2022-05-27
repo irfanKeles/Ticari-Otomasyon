@@ -1,0 +1,134 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Admin Panel || Kontrol/Yönetim</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <link rel="icon" href="~/Bootstrap/dist/assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- BENİM CSS DOSYALARIM-->
+
+    <link href="~/Content/MyCss/MyStyle.css" rel="stylesheet" />
+    <link href="~/Content/MyCss/List.css" rel="stylesheet" />
+    <link href="~/Content/MyCss/ProfileDetail.css" rel="stylesheet" />
+    <link href="~/Content/MyCss/PDetail.css" rel="stylesheet" />
+    <!-- vendor css -->
+    <link rel="stylesheet" href="~/Bootstrap/dist/assets/css/style.css">
+</head>
+<body class="">
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+    <!-- [ navigation menu ] start -->
+    <nav class="pcoded-navbar menu-light ">
+        <div class="navbar-wrapper  ">
+            <div class="navbar-content scroll-div">
+                <ul class="nav pcoded-inner-navbar ">
+                    @*<li class="nav-item pcoded-menu-caption">
+            <label>Başlık</label>
+        </li>*@
+                    <li class="nav-item">
+                        <a href="/MusteriKontrolPanel/Index" class="nav-link "><span class="pcoded-micon"><i class="fa fa-user"></i></span><span class="pcoded-mtext">Profil</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/MusteriKontrolPanel/kargoTakip" class="nav-link "><span class="pcoded-micon"><i class="fa fa-truck"></i></span><span class="pcoded-mtext">Kargo Takibi</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/MusteriKontrolPanel/SatisGecmisi" class="nav-link "><span class="pcoded-micon"><i class="fa fa-history"></i></span><span class="pcoded-mtext">Satın Alma Geçmişi</span></a>
+                    </li>
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Oturum</label>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/MusteriKontrolPanel/LogOut" class="nav-link "><span class="pcoded-micon"><i class="fa fa-sign-out"></i></span><span class="pcoded-mtext">Çıkış Yap</span></a>
+                    </li>
+                    @*<li class="nav-item pcoded-hasmenu">
+            <a href="#!" class="nav-link "><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Authentication</span></a>
+            <ul class="pcoded-submenu">
+                <li><a href="auth-signup.html" target="_blank">Sign up</a></li>
+                <li><a href="auth-signin.html" target="_blank">Sign in</a></li>
+            </ul>
+        </li>*@
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- [ navigation menu ] end -->
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-blue" style="background-color: #4680ff; height:50px;">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <a href="#!" class="b-brand">
+                <!-- ========   change your logo hear   ============ -->
+                <img src="~/Bootstrap/dist/assets/images/logo.png" alt="" class="logo">
+                <img src="~/Bootstrap/dist/assets/images/logo-icon.png" alt="" class="logo-thumb">
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+
+            <ul class="navbar-nav ml-auto">
+
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                            </div>
+                            <ul class="pro-body">
+                                <li><a href="/MusteriKontrolPanel/Index" class="dropdown-item"><i class="feather icon-user"></i> Profil</a></li>
+                                <li><a href="/MusteriKontrolPanel/GelenKutusu" class="dropdown-item"><i class="feather icon-mail"></i> Mesajlar</a></li>
+                                <li><a href="#" class="dropdown-item"><i class="fa fa-info"></i> Yardım</a></li>
+                                <li><a href="/MusteriKontrolPanel/LogOut" class="dropdown-item"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Çıkış Yap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <!-- [ Header ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div style=" width:auto;  display:block; padding:45px 30px;">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Required Js -->
+    <script src="~/Bootstrap/dist/assets/js/vendor-all.min.js"></script>
+    <script src="~/Bootstrap/dist/assets/js/plugins/bootstrap.min.js"></script>
+    <script src="~/Bootstrap/dist/assets/js/ripple.js"></script>
+    <script src="~/Bootstrap/dist/assets/js/pcoded.min.js"></script>
+    <!-- Apex Chart -->
+    <script src="~/Bootstrap/dist/assets/js/plugins/apexcharts.min.js"></script>
+    <!-- custom-chart js -->
+    <script src="~/Bootstrap/dist/assets/js/pages/dashboard-main.js"></script>
+
+</body>
+
+</html>

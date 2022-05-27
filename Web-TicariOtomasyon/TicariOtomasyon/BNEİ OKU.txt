@@ -1,0 +1,12 @@
+-->perrsonel satýþ geçmiþi sayfasý partial wiev den getirildiði için
+sayfalama sýrasýnda partial viev de dönmesi sonucunda oluþan bozuk görüntü
+(kod açýklama satýrýna alýndý)
+
+-->Google Chartlarda sorun oluþtu her þey doðru olmasýna
+raðmen þema gözükmüyor veriler gelmiyor (Hata vermiyor.
+ Veriler yüklenirken þemaya aktarýlmýyor)
+
+
+-->Dinamik Fatura içeriði kýsmýnda sorunlar olduðundan eklenmedi 
+
+-->Admin rollemede menü gizlendi (ilk baþdaki boþ sayfa  admin2 de gizleniyor) 

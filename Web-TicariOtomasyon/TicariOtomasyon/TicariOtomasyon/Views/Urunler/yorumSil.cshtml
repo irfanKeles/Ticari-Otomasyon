@@ -1,0 +1,46 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<YorumPuan>
+
+<div class="container">
+    <div class="row bootstrap snippets bootdeys">
+        <div class="col-md-8 col-sm-12" style="min-width:100%; ">
+            <div class="comment-wrapper">
+                <div class="panel panel-info">
+                    <div class="panel-body">
+                        <hr>
+
+                        <ul class="media-list">
+                            @foreach (var item in Model)
+                            {
+
+                                <li class="media" style="border: 1px dashed black;">
+
+                                    <img src="@item.Musteriler.MusteriFoto" alt="" class="img-circle">
+                                    <div class="media-body">
+                                        <strong class="text-muted">@item.Musteriler.MusteriAD @item.Musteriler.MusteriSoyad</strong>
+                                        <span class="text-muted pull-right">
+                                            <small class="text-success">Puan: @item.Puan</small>
+                                            <small class="text-primary">@item.YorumT.ToShortDateString()</small>
+                                        </span>
+
+                                        <p>
+                                            @item.Yorum
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <a href="/Urunler/yorumKaldir/@item.YpID" class="btn btn-icon btn-danger" data-toggle="tooltip"
+                                                data-placement="top" data-original-title="SİL"
+                                                style="width:25px; height:25px;">
+                                            <i class="feather icon-trash-2"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

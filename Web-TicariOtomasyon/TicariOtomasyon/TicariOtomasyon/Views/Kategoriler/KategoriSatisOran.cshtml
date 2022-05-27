@@ -1,0 +1,27 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.IEnumerableGroup.KategoriGrup>
+
+<div style="min-width:100%;">
+    <table class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th scope="col">Kategori Ad</th>
+                <th scope="col">Kategode Satılan Ürün</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                   <td style="vertical-align:middle;">@item.KategoriAd</td>
+                    <td style="vertical-align:middle;">
+                        <div class="progress progress-xs">
+                            <div class="progress-bar bg-primary" style="width:@item.KategoriSayi.ToString()%"></div>
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;"><span class="badge bg-primary" style="font-size:12px; color:white; border-radius:100%;">@item.KategoriSayi</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

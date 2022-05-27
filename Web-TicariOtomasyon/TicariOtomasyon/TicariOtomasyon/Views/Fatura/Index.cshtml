@@ -1,0 +1,72 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<Faturalar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 style="display:block;">FATURALAR</h3>
+<table class="table table-hover table-bordered" style="background-color:white;">
+    <tr>
+        <td colspan="8">
+            <div style="float:right;">
+                <a href="/Fatura/FaturaEKle" class="btn btn-outline-primary">
+                    Yeni Fatura Girişi
+                    <i class="feather icon-plus" style="margin:3px 7px;"></i>
+                </a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th scope="col" style="text-align:center; vertical-align:middle;"> Fatura Seri Sıra No</th>
+        <th scope="col" style="text-align:center; vertical-align:middle;"> Fatura Tarih</th>
+        <th scope="col" style="text-align:center; vertical-align:middle;"> Fatura Vergi Dairesi</th>
+        <th scope="col" style="width:200px; text-align:center;"> İŞELMLER</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            @Html.Hidden(@item.FaturaID.ToString())
+            @Html.Hidden(@item.FaturDurum.ToString())
+            <td style="text-align:center; vertical-align:middle;">@item.FaturaSeriNO @item.FaturaSıraNo</td>
+            <td style="text-align:center; vertical-align:middle;">@item.FaturaTarih.ToShortDateString()</td>
+            <td style="text-align:center; vertical-align:middle;">@item.FaturaVergiDairesi</td>
+            <td style="vertical-align:middle; text-align:center;">
+                <div style="display:inline-flex;">
+                    <a href="/Fatura/Ggetir/@item.FaturaID" class="btn btn-icon btn-success" data-toggle="tooltip"
+                       data-placement="top" data-original-title="DÜZENLE">
+                        <i class="feather icon-edit-2" style="margin:3px 7px;"></i>
+                    </a>
+                </div>
+                <div style="display:inline-flex;">
+                    <a href="/Fatura/Ficerik/@item.FaturaID" class="btn btn-icon btn-primary" data-toggle="tooltip"
+                       data-placement="top" data-original-title="GÖRÜNTÜLE">
+                        <i class="feather icon-eye" style="margin:4px 7px;"></i>
+                    </a>
+                </div>
+                @*<button type="button" style="border-radius:100%; padding:11px 15px; margin-bottom:5px;" class="btn  btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" data-targeturl="@Url.Action("Ficerigi","Fatura",new {id=item.FaturaID })"> <i class="feather icon-eye"></i></button>
+                    <div id="modal-container" class="modal fade" tabindex="-1" role="dialog">
+                        <a href="#close" title="Close" class="modal-close-btn">X</a>
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                hghjg
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title h4" id="myLargeModalLabel"> Fatura İçeriği</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    @Html.Action("Ficerigi")
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+            </td>
+        </tr>
+    }
+</table>

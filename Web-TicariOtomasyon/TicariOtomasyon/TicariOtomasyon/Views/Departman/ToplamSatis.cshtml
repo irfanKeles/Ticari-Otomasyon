@@ -1,0 +1,38 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.IEnumerableGroup.DepartmanSatis>
+<div style="max-height:400px; overflow:auto;">
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="width:100px">Departman Adı</th>
+                <th>Satış Oranı</th>
+                <th style="width:40px;"></th>
+             
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="vertical-align:middle;">@item.departmanAd</td>
+                        <td style="vertical-align:middle;">
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-primary" style="width:@item.Ds.ToString()%"></div>
+                            </div>
+                        </td>
+                        <td style="vertical-align:middle;"><span class="badge bg-primary" style="font-size:12px; padding:10px; color:white; border-radius:100%;">@item.Ds</span></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>
+                       Bu Departmana Ait Satış Geçmişi Yok
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

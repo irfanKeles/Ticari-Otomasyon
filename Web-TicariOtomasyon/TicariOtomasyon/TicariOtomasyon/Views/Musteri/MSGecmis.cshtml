@@ -1,0 +1,36 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<Satislar>
+@{
+    ViewBag.Title = "MSGecmis";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 style="display:block;">Müşteri Satın Alma Geçmişi</h3>
+<div class="alert alert-primary" role="alert"> Müşteri Adı: @ViewBag.ads </div>
+<table class="table table-hover table-bordered" style="background-color:white;">
+    <tr>
+        <th scope="col"> Müşteri Ad/Soyad</th>
+        <th scope="col"> Urun Adı </th>
+        <th scope="col"> Adet </th>
+        <th scope="col"> Alış Tarihi </th>
+        <th scope="col" style="text-align:center;"> İşlemler </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Musteriler.MusteriAD @item.Musteriler.MusteriSoyad</td>
+            <td>@item.Urunlerim.UrunAd</td>
+            <td>@item.SatisAdet</td>
+            <td>@item.SatisTarihi.ToString("dd/MM/yyyy")</td>
+            <td>
+                <div style="display:inline-flex;">
+                    <a href="/Musteri/MSGecmis/@item.MusteriID" class="btn btn-dark">
+                        Yazdır
+                        <i class="feather icon-alert-octagon" style="margin:3px 7px;"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+

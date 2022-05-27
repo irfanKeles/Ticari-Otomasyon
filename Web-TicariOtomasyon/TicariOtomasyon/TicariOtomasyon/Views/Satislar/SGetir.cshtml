@@ -1,0 +1,51 @@
+﻿@model TicariOtomasyon.Models.Concrete.Satislar
+@{
+    ViewBag.Title = "SGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 style="display:block;">SATIŞ DÜZENLE</h3>
+@using (@Html.BeginForm("SGuncelle", "Satislar", FormMethod.Post))
+{
+    <table class="table table-hover table-bordered" style="background-color:white; max-width:1000px;">
+        <tr>
+            @Html.HiddenFor(x => x.SatisID)
+            <th scope="col"> Ürün</th>
+            <td>@Html.DropDownListFor(x => x.UrunID, (List<SelectListItem>)ViewBag.urun, new { @class = "form-control", @style = "background-color:#3333;" })</td>
+        </tr>
+        <tr>
+            <th scope="col"> MÜŞTERİ ADI / SOYADI</th>
+            <td>@Html.DropDownListFor(x => x.MusteriID, (List<SelectListItem>)ViewBag.msuteri, new { @class = "form-control", @style = "background-color:#3333;" })</td>
+        </tr>
+        <tr>
+            <th scope="col"> PERSONEL ADI / SOYADI</th>
+            <td>@Html.DropDownListFor(x => x.PersonelID, (List<SelectListItem>)ViewBag.personel, new { @class = "form-control", @style = "background-color:#3333;" })</td>
+        </tr>
+        <tr>
+            <th scope="col"> ADET</th>
+            <td>
+                @Html.TextBoxFor(x => x.SatisAdet, new { @class = "form-control", @style = "background-color:#3333;" })
+                @Html.ValidationMessageFor(x => x.SatisAdet, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <th scope="col"> FİYAT</th>
+            <td>@Html.TextBoxFor(x => x.SatisFiyat, new { disabled = "disabled", @class = "form-control", @style = "background-color:#3333;" })</td>
+        </tr>
+        <tr>
+            <th scope="col"> TOPLAM TUTAR</th>
+            <td>@Html.TextBoxFor(x => x.SatisToplamFiyat, new { disabled = "disabled", @class = "form-control", @style = "background-color:#3333;" })</td>
+        </tr>
+        <tr>
+            <th scope="col"> SATIŞ TARİHİ</th>
+            <td>@Html.TextBoxFor(x => x.SatisTarihi, "{0:dd/MM/yyyy}", new { disabled = "disabled", @class = "form-control", @style = "background-color:#3333;" })</td>
+        </tr>
+        <tr>
+            <th scope="col"> İŞLEMLLER</th>
+            <td><button class="btn btn-primary">DÜZENLE</button></td>
+        </tr>
+
+    </table>
+}
+
+

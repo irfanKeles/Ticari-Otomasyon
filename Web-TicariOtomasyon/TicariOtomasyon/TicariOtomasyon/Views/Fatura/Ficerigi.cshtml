@@ -1,0 +1,24 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<FaturaIcerik>
+<table class="table table-hover table-bordered" style="background-color:white;" id="modalTitle">
+    <tr style="background-color:white;">
+        <th scope="col"> Fatura Açıklama</th>
+        <th scope="col"> Adet</th>
+        <th scope="col"> Birim Fiyat</th>
+        <th scope="col"> Tutar</th>
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                @Html.Hidden(item.FaturaID.ToString())
+                <td>@item.FaturaAcıklama</td>
+                <td>@item.FaturaMiktar</td>
+                <td>@item.FaturaBirimFiyat</td>
+                <td>@item.FaturaTutar</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

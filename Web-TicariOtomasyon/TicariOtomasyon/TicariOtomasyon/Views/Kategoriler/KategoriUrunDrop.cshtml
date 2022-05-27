@@ -1,0 +1,35 @@
+﻿@model TicariOtomasyon.Models.Kategori_urun.KategoriUrunList
+@{
+    ViewBag.Title = "KategoriUrunDrop";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $('#DropKategori').change(function () {
+            var id = $('#DropKategori').val();
+            $.ajax({
+                url: '/Kategoriler/urunListem',
+                data: { p: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#Dropurun').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#Dropurun').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+<div class="form-group">
+    <br />
+    <label>Kategoriler</label><br />
+    @Html.DropDownList("DropKategori", Model.KATEGORILER, "Kategori Seçiniz", new { @class = "form-control" })
+    <br />
+    <label> Ürünler</label><br />
+    @Html.DropDownList("Dropurun", Model.URUNLER, "Ürün Seçiniz", new { @class = "form-control" })
+</div>

@@ -1,0 +1,133 @@
+﻿@model TicariOtomasyon.Models.Concrete.Musteriler
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MusteriLayout.cshtml";
+}
+
+<h3 style="display:block;">Müşteri Bilgileri</h3>
+@*<div class="alert alert-primary" role="alert"> Personel Adı: @ViewBag.pAds</div>*@
+<link href="~/Content/MyCss/Customer.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="profile-card-4 z-depth-3">
+                <!-- BU BÖLÜMDE PROFİL SOL BİLGİLER VAR -->
+                <div class="card">
+                    @Html.Action("Goruntule", "MusteriKontrolPanel")
+                </div>
+                <!-- BU BÖLÜMDE PROFİL SOL BİLGİLER BİTİŞİ -->
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card z-depth-3">
+                <div class="card-body">
+                    <ul class="nav nav-pills nav-pills-primary nav-justified">
+                        <li class="nav-item">
+                            <a href="javascript:void();" data-target="#profile" data-toggle="pill" class="nav-link active show"><i class="fa fa-user"></i> <span class="hidden-xs">Profil</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void();" data-target="#messages" data-toggle="pill" class="nav-link"><i class="fa fa-history"></i> <span class="hidden-xs">Yorum Geçmişi</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void();" data-target="#edit" data-toggle="pill" class="nav-link"><i class="fa fa-id-card"></i> <span class="hidden-xs">Düzenle</span></a>
+                        </li>
+                    </ul>
+                    <!-- BU BÖLÜMDE PROFİL BİLGİLERİ VAR-->
+                    <div class="tab-content p-3">
+                        <div class="tab-pane active show" id="profile">
+                            @Html.Action("PBilgi", "MusteriKontrolPanel")
+                        </div>
+                        <!-- BU BÖLÜMDE PROFİL BİTİYO-->
+                        <!-- BU BÖLÜMDE YORUYM GEÇMİŞİ OLACAK-->
+                        <div class="tab-pane" id="messages">
+                            @Html.Action("YList", "MusteriKontrolPanel")
+                        </div>
+                        <!-- BU BÖLÜMDE BİTİYO-->
+                        <!--BU BÖLÜMDE DÜZENLEME İŞŞLEMLERİ YAPILACAK-->
+                        <div class="tab-pane" id="edit">
+                            @using (Html.BeginForm("MGunvelle", "MusteriKontrolPanelController", FormMethod.Post))
+                            {
+                                @HttpContext.Current.User.Identity.Name
+                                @Html.HiddenFor(x => x.MusteriID)
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">İsim</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextBoxFor(x => x.MusteriAD, new { @class = "form-control", placeholder = "İsim:" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Soyisim</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextBoxFor(x => x.MusteriSoyad, new { @class = "form-control", placeholder = "Soyisim:" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Şifre</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextBoxFor(x => x.MusteriSifre, new { @class = "form-control", placeholder = "Şifre:", @type = "password" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Mail</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextBoxFor(x => x.MusteriMail, new { @placeholder = "Mail:", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Telefon No</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextBoxFor(x => x.MusteriTelNo, new { @placeholder = "Tel No:", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Doğum.T</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextBoxFor(x => x.MusteriDT, "{0:dd/MM/yyyy}", new { @placeholder = "Doğum.T", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Adres</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextAreaFor(x => x.MusteriAdres, new { @placeholder = "Adres", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Foroğraf</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextBoxFor(x => x.MusteriFoto, new { @placeholder = "Fotoğraf", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Şehir</label>
+                                    <div class="col-lg-9">
+                                        @Html.DropDownListFor(x => x.SehirID, (List<SelectListItem>)ViewBag.Sehir, "Şehr Seçiniz..", new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Cinsiyet</label>
+                                    <div class="col-lg-9">
+                                        @Html.TextBoxFor(x => x.Cinsiyet, new { @placeholder = "Cinsiyet", @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <button class="btn btn-success"> Bilgileri Düzenle</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

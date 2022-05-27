@@ -1,0 +1,141 @@
+﻿@model TicariOtomasyon.Models.Concrete.Urunlerim
+@{
+    ViewBag.Title = "UrunEkle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 style="display:block;">Yeni Urun Ekle</h3>
+@using (Html.BeginForm("UrunEkle", "Urunler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <section class="bg-light">
+            <div class="row">
+                <div class="col-lg-5 mt-5">
+                    <div class="card mb-3">
+                        <img style="background-size:100%;" class="card-img img-fluid" src="~/Bootstrap/dist/assets/images/slider/setting.png" id="product-detail">
+                    </div>
+                </div>
+                <div class="col-lg-7 mt-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h2">
+                                @Html.TextBoxFor(x => x.UrunAd, new { placeholder = "Ürün Adı", @class = "form-control", @style = "background-color:#e0e0e0" })
+                                @Html.ValidationMessageFor(x => x.UrunAd, "", new { @class = "tect-danger" })
+                            </h1>
+                            <ul class="list-unstyled pb-3">
+                                <li>
+                                    @Html.TextBoxFor(x => x.UrunBilgi, new { placeholder = "Ürün Bilgi", @class = "form-control", @style = "background-color:#e0e0e0" })
+                                    @Html.ValidationMessageFor(x => x.UrunBilgi, "", new { @class = "tect-danger" })
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item" style="width:240px;">
+                                    @Html.TextBoxFor(x => x.UrunAlisFiyat, new { placeholder = "Alış Fiyatı", @class = "form-control", @style = "background-color:#e0e0e0" })
+                                    @Html.ValidationMessageFor(x => x.UrunAlisFiyat, "", new { @class = "tect-danger" })
+                                </li>
+                                <li class="list-inline-item" style="width:240px;">
+                                    @Html.TextBoxFor(x => x.UrunSatisFiyat, new { placeholder = "Satış Fiyatı", @class = "form-control", @style = "background-color:#e0e0e0" })
+                                </li>
+                            </ul>
+
+
+                            <ul class="list-inline">
+                                <li class="list-inline-item" style="margin:0px;">
+
+                                </li>
+                                <li class="list-inline-item" style="margin:0px;">
+                                    <br />
+                                    @Html.DropDownListFor(x => x.MarkaID, (List<SelectListItem>)ViewBag.dropMarka, " Marka ", new { placeholder = "Ürün Bilgi", @class = "form-control", @style = "background-color:#e0e0e0" })
+                                    @Html.ValidationMessageFor(x => x.MarkaID, "", new { @class = "tect-danger" })
+                                </li>
+                                <li class="list-inline-item" style="margin:0px;">
+
+                                </li>
+                                <li class="list-inline-item" style="margin:0px;">
+                                    @Html.DropDownListFor(x => x.KategoriID, (List<SelectListItem>)ViewBag.drop1, " Kategori ", new { placeholder = "Ürün Bilgi", @class = "form-control", @style = "background-color:#e0e0e0" })
+                                    @Html.ValidationMessageFor(x => x.KategoriID, "", new { @class = "tect-danger" })
+                                </li>
+                                <li class="list-inline-item" style="margin:0px;">
+
+                                </li>
+                                <li class="list-inline-item" style="margin:0px; width:190px;">
+                                    @Html.TextBoxFor(x => x.UrunStok, new { placeholder = "Stok", @class = "form-control", @style = "background-color:#e0e0e0" })
+                                    @Html.ValidationMessageFor(x => x.UrunStok, "", new { @class = "tect-danger" })
+                                </li>
+                            </ul>
+                            <ul class="list-inline">
+                                <li class="list-inline-item" style="width:100%;">
+                                    <input type="file" name="up" class="form-control" style="background-color:#e0e0e0" />
+                                </li>
+
+                            </ul>
+                            <div class="row">
+
+                                <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <button style="margin:0 15px;" class="btn btn-primary"> Yeni Ürün Ekle</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="~/BSDetail/assets/js/jquery-1.11.0.min.js"></script>
+        <script src="~/BSDetail/assets/js/jquery-migrate-1.2.1.min.js"></script>
+        <script src="~/BSDetail/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="~/BSDetail/assets/js/templatemo.js"></script>
+        <script src="~/BSDetail/assets/js/custom.js"></script>
+
+
+        <script src="~/BSDetail/assets/js/slick.min.js"></script>
+        <script>
+            $('#carousel-related-product').slick({
+                infinite: true,
+                arrows: false,
+                slidesToShow: 4,
+                slidesToScroll: 3,
+                dots: true,
+                responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 3
+                    }
+                }
+                ]
+            });
+        </script>
+        <!-- End Slider Script -->
+
+    </body>
+
+</html>
+
+
+}
+

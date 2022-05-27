@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<button class="btn btn-info" id="btn1"> Alert 1</button>
+<button class="btn btn-primary" id="btn2"> Alert 2</button>
+<button class="btn btn-success" id="btn3"> Alert 3</button>
+<button class="btn btn-warning" id="btn4"> Alert 4</button>
+<button class="btn btn-danger" id="btn5"> Alert 5</button>
+
+<script>
+    $('#btn1').click(function () {
+        swal(" Merhaba dünya! ");
+    });
+    //---------------------------------------------------
+    $('#btn2').click(function () {
+        swal(" Başlık! ", " ...İçerik! ");
+    });
+    //---------------------------------------------------
+    $('#btn3').click(function () {
+        swal("İşlem Başarılı!", "Anasayfaya Yönlendiriliyorsunuz!", "success");
+    });
+    //---------------------------------------------------
+    $('#btn4').click(function () {
+        swal("sayfa 1, 2 ye ilerlemek için tıklayıunız")
+            .then((value) => {
+                swal(`sayfa2: ${value}`);
+            });
+    });
+    //---------------------------------------------------
+    $('#btn5').click(function () {
+        swal({
+            title: "İşlemi Onaylıyormusunuz?",
+            text: "Eğer 'OK' derseniz veriler silinecek!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    swal("İşlem Başarılı!", {
+                        icon: "success",
+                    });
+                } else {
+                    swal("İşlem İptal Edildi!");
+                }
+            });
+    });
+</script>

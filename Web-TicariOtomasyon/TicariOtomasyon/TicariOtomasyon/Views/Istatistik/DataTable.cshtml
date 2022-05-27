@@ -1,0 +1,73 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.IEnumerableGroup.MarkaGrup>
+
+<div class="card" style="max-height:400px; overflow:auto;">
+    <div class="card-header">
+        <h3 class="card-title">Marka - Ürün</h3>
+    </div>
+    <div class="card-body p-0">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Marka Adı</th>
+                    <th>Ürün Sayısı</th>
+                    <th style="width: 40px">%'lik</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UrunMarka</td>
+                        <td>
+                            @{ Decimal avg = 0;}
+                            @if (item.UrunSayi > 0 && item.UrunSayi <= 25)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-danger" style="width:@item.UrunSayi.ToString()%"></div>
+                                </div>
+                            }
+                            @if (item.UrunSayi > 25 && item.UrunSayi <= 50)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-warning" style="width:@item.UrunSayi.ToString()%"></div>
+                                </div>
+                            }
+                            @if (item.UrunSayi > 50 && item.UrunSayi <= 75)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-primary" style="width:@item.UrunSayi.ToString()%"></div>
+                                </div>
+                            }
+                            @if (item.UrunSayi > 75 && item.UrunSayi <= 100)
+                            {
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-success" style="width:@item.UrunSayi.ToString()%"></div>
+                                </div>
+                            }
+
+                        </td>
+                        <td>
+                            @if (item.UrunSayi > 0 && item.UrunSayi <= 25)
+                            {
+                                <span class="badge bg-danger">@item.UrunSayi%</span>
+                            }
+                            @if (item.UrunSayi > 25 && item.UrunSayi <= 50)
+                            {
+                                <span class="badge bg-warning">@item.UrunSayi%</span>
+                            }
+                            @if (item.UrunSayi > 50 && item.UrunSayi <= 75)
+                            {
+                                <span class="badge bg-primary">@item.UrunSayi%</span>
+                            }
+                            @if (item.UrunSayi > 75 && item.UrunSayi <= 100)
+                            {
+                                <span class="badge bg-success">@item.UrunSayi%</span>
+                            }
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

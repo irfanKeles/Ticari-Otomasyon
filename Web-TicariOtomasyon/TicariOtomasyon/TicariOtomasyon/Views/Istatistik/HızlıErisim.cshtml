@@ -1,0 +1,359 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.IEnumerableGroup.KategoriGrup>
+@{
+    ViewBag.Title = "HızlıErisim";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Genel İstatistik</h2>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="~/BSAdminSimpleT/plugins/fontawesome-free/css/all.min.css" />
+    <link rel="stylesheet" href="~/BSAdminSimpleT/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/BSAdminSimpleT//dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <div class="content-wrapper" style="margin:0px;">
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card" style="max-height:400px; overflow:auto;">
+                                <div class="card-header">
+                                    <h4 class="card-title">Kategori - Ürün</h4>
+                                </div>
+                                <!-- /.card-header -->
+                                <div class="card-body p-0">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10px">#</th>
+                                                <th>Kategori Adı</th>
+                                                <th>Doluluk Oranı</th>
+                                                <th style="width: 40px">%'lik</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{int sıramo = 0;}
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@{sıramo++;} @sıramo</td>
+                                                    <td>@item.KategoriAd</td>
+                                                    <td>
+                                                        @if (item.KategoriSayi > 0 && item.KategoriSayi <= 25)
+                                                        {
+                                                            <div class="progress progress-xs">
+                                                                <div class="progress-bar bg-danger" style="width:@item.KategoriSayi.ToString()%"></div>
+                                                            </div>
+                                                        }
+                                                        @if (item.KategoriSayi > 25 && item.KategoriSayi <= 50)
+                                                        {
+                                                            <div class="progress progress-xs">
+                                                                <div class="progress-bar bg-warning" style="width:@item.KategoriSayi.ToString()%"></div>
+                                                            </div>
+                                                        }
+                                                        @if (item.KategoriSayi > 50 && item.KategoriSayi <= 75)
+                                                        {
+                                                            <div class="progress progress-xs">
+                                                                <div class="progress-bar bg-primary" style="width:@item.KategoriSayi.ToString()%"></div>
+                                                            </div>
+                                                        }
+                                                        @if (item.KategoriSayi > 75 && item.KategoriSayi <= 100)
+                                                        {
+                                                            <div class="progress progress-xs">
+                                                                <div class="progress-bar bg-success" style="width:@item.KategoriSayi.ToString()%"></div>
+                                                            </div>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @if (item.KategoriSayi > 0 && item.KategoriSayi <= 25)
+                                                        {
+                                                            <span class="badge bg-danger">@item.KategoriSayi%</span>
+                                                        }
+                                                        @if (item.KategoriSayi > 25 && item.KategoriSayi <= 50)
+                                                        {
+                                                            <span class="badge bg-warning">@item.KategoriSayi%</span>
+                                                        }
+                                                        @if (item.KategoriSayi > 50 && item.KategoriSayi <= 75)
+                                                        {
+                                                            <span class="badge bg-primary">@item.KategoriSayi%</span>
+                                                        }
+                                                        @if (item.KategoriSayi > 75 && item.KategoriSayi <= 100)
+                                                        {
+                                                            <span class="badge bg-success">@item.KategoriSayi%</span>
+                                                        }
+                                                    </td>
+                                                </tr>
+
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+
+                            @Html.Action("DataTable", "Istatistik")
+                            @Html.Action("ToDoList", "Istatistik")
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+
+                            <!-- BURAYA GELECEK -->
+                            @Html.Action("DataTable2", "Istatistik")
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Satatik Data Tablo</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="width: 10px">#</th>
+                                                <th>Ürün Satısı</th>
+                                                <th>Ortalama Stok</th>
+                                                <th style="width: 40px">%'lik</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1.</td>
+                                                <td>Buz Dolabı</td>
+                                                <td>
+                                                    <div class="progress progress-xs">
+                                                        <div class="progress-bar bg-warning" style="width: 40%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-warning">40 %</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>2.</td>
+                                                <td>Ütü</td>
+                                                <td>
+                                                    <div class="progress progress-xs">
+                                                        <div class="progress-bar bg-danger" style="width: 10%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-danger">10 %</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>3.</td>
+                                                <td>LED Tv.</td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar bg-success" style="width: 100%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-success">100%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>4.</td>
+                                                <td>Game Ekipman</td>
+                                                <td>
+                                                    <div class="progress progress-xs progress-striped active">
+                                                        <div class="progress-bar bg-primary" style="width: 75%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="badge bg-primary">75 %</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    @*<div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Responsive Hover Table</h3>
+
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-default">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body table-responsive p-0">
+                                        <table class="table table-hover text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>User</th>
+                                                    <th>Date</th>
+                                                    <th>Status</th>
+                                                    <th>Reason</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>183</td>
+                                                    <td>John Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-success">Approved</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>219</td>
+                                                    <td>Alexander Pierce</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-warning">Pending</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>657</td>
+                                                    <td>Bob Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-primary">Approved</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>175</td>
+                                                    <td>Mike Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-danger">Denied</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>*@
+
+                    @*<div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">Fixed Header Table</h3>
+
+                                        <div class="card-tools">
+                                            <div class="input-group input-group-sm" style="width: 150px;">
+                                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                                <div class="input-group-append">
+                                                    <button type="submit" class="btn btn-default">
+                                                        <i class="fas fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body table-responsive p-0" style="height: 300px;">
+                                        <table class="table table-head-fixed text-nowrap">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>User</th>
+                                                    <th>Date</th>
+                                                    <th>Status</th>
+                                                    <th>Reason</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>183</td>
+                                                    <td>John Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-success">Approved</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>219</td>
+                                                    <td>Alexander Pierce</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-warning">Pending</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>657</td>
+                                                    <td>Bob Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-primary">Approved</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>175</td>
+                                                    <td>Mike Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-danger">Denied</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>134</td>
+                                                    <td>Jim Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-success">Approved</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>494</td>
+                                                    <td>Victoria Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-warning">Pending</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>832</td>
+                                                    <td>Michael Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-primary">Approved</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>982</td>
+                                                    <td>Rocky Doe</td>
+                                                    <td>11-7-2014</td>
+                                                    <td><span class="tag tag-danger">Denied</span></td>
+                                                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>*@
+
+            </section>
+        </div>
+        <!-- /.content-wrapper -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/BSAdminSimpleT//plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/BSAdminSimpleT//plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/BSAdminSimpleT//dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/BSAdminSimpleT//dist/js/demo.js"></script>
+</body>
+</html>

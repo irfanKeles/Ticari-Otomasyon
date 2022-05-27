@@ -1,0 +1,73 @@
+﻿@model TicariOtomasyon.Models.Concrete.Musteriler
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="~/Content/MyCss/LoGOOOO.css" rel="stylesheet" />
+    <link rel="icon" href="~/Bootstrap/dist/assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="~/Bootstrap/dist/assets/css/style.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body style="background-image: url('../../Bootstrap/dist/assets/images/slider/photo_bg.jpg'); background-repeat: no-repeat; background-size: 100%; ">
+    <div id="login-form">
+        <input type="radio" checked id="login" name="switch" class="hide">
+        <input type="radio" id="signup" name="switch" class="hide">
+        <div>
+            <ul class="form-header">
+                <li><label for="login"><i class="fa fa-lock"></i> Giriş Yap<label for="login"></li>
+                <li><label for="signup"><i class="fa fa-credit-card"></i> Üye Ol</label></li>
+            </ul>
+        </div>
+
+        <div class="section-out">
+            <section class="login-section">
+                <div class="login" style="justify-content:center; align-items:center; display:flex">
+                    @using (Html.BeginForm("MLogin", "LoginPanel", FormMethod.Post))
+                    {
+                        <ul class="ul-list">
+                            <br />
+                            <li style="display:inline-flex;">@Html.TextBoxFor(x => x.MusteriMail, new { @class = "form-control", @placeholder = "Mail Adresiniz", @style = "height:40px; width:250px;" })<span class="icon"><i class="fa fa-user"></i></span></li>
+                            <li style="display:inline-flex;">@Html.TextBoxFor(x => x.MusteriSifre, new { @class = "form-control", @type = "password", @placeholder = "Şifreniz", @style = "height:40px; width:250px;" })<span class="icon"><i class="fa fa-lock"></i></span></li>
+                            <br />
+                            <li><input type="checkbox" id="check1"> <label for="check1">Beni Hatırla</label>  <a href="#" style="float:right"> Şifreni mi Unuttun ? </a></li>
+                            <br />
+                            <button class="btn btn-primary">GİRİŞ YAP</button>
+                        </ul>
+                    }
+                </div>
+            </section>
+            <section class="signup-section">
+                <div class="login" style="justify-content:center; align-items:center; display:flex">
+                    @using (Html.BeginForm("MUyeOl", "LoginPanel", FormMethod.Post))
+                    {
+                        <ul class="ul-list">
+                            <li>
+                                <div style="display:inline-flex">@Html.TextBoxFor(x => x.MusteriMail, new { @class = "form-control", @placeholder = "Mail Adresiniz", @style = "height:40px; width:250px;" })<span class="icon"><i class="fa fa-user"></i></span></div>
+                                <div style="display:block">@Html.ValidationMessageFor(x => x.MusteriMail, "", new { @class = "text-danger" })</div>
+                            </li>
+                            <li>
+                                <div style="display:inline-flex">@Html.TextBoxFor(x => x.MusteriSifre, new { @class = "form-control", @type = "password", @placeholder = "Şifreniz", @style = "height:40px; width:250px;" })<span class="icon"><i class="fa fa-lock"></i></span></div>
+                                <div style="display:block">@Html.ValidationMessageFor(x => x.MusteriSifre, "", new { @class = "text-danger" })</div>
+                            </li>
+                            <li>
+                                <div style="display:inline-flex"><input type="date" name="MusteriDT" class="form-control" style="height:40px; width:250px;" /><span class="icon"><i class="fa fa-birthday-cake"></i></span></div>
+                                <div style="display:block">@Html.ValidationMessageFor(x => x.MusteriDT, "", new { @class = "text-danger" })</div>
+                            </li>
+                            <li><input type="checkbox" id="check1"> <label for="check1"><a href="#">Üyelik Sözleşmesi</a>'ni kabul ediyorum</label></li>
+                            <button class="btn btn-primary">ÜYE OL</button>
+                        </ul>
+                    }
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+</body>
+</html>

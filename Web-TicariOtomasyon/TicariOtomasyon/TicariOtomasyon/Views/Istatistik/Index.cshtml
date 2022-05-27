@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<h3 style="display:block;">İstatistikler</h3>
+<div class="row" style="margin:15px 0; justify-content:center; align-content:center; display:flex;">
+    <div class="card bg-c-blue text-white text-center" style="min-width:232px; background-color:#786fa6; margin:0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>MÜŞTERİ <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.musteri</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #f8a5c2; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>ÜRÜN <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.urun</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #63cdda; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>PERSONEL <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.personel</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #ea8685; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>KATEGORİ <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.kat</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin:15px 0; justify-content:center; align-content:center; display:flex;">
+    <div class="card bg-c-blue text-white text-center" style="min-width:232px; background-color:#ff7f50; margin:0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>STOK <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.stok</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #ff6b81; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>MARkA <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.marka</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #a4b0be; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>20 den az stoğu kalan ürün <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.kritik</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #57606f; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>En Pahalı Ürün <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.yuksek</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin:15px 0; justify-content:center; align-content:center; display:flex;">
+    <div class="card bg-c-blue text-white text-center" style="max-width: 232px; min-width: 232px; background-color: #00b894; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>Tek Seferde En Çok Satan (Adet) <cite title="Source Title" style="font-size:xx-large">@ViewBag.encok</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #e17055; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>Toplam Satış Sayısı <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.tsatis</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #e84393; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>En çok Alışveriş Yapan <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.enmusteri</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+    <div class="card bg-c-blue text-white text-center" style="min-width: 232px; background-color: #192a56; margin: 0 5px;">
+        <div class="card-body">
+            <blockquote class="blockquote mb-0">
+                <footer class="blockquote-footer text-white">
+                    <small>En Fazla Satan <cite title="Source Title" style="font-size:xx-large"><br />@ViewBag.encoksatan</cite></small>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<TicariOtomasyon.Models.IEnumerableGroup.PersonelGrup>
+
+<div class="card" style="max-height:400px; overflow:auto;">
+    <div class="card-header">
+        <h3 class="card-title">Personel Satış</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body p-0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Personel Adı</th>
+                    <th>Satış Oranı</th>
+                    <th style="width: 40px">%'lik</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.PerAd</td>
+                        <td>
+                            <div class="progress progress-xs">
+                                <div class="progress-bar bg-primary" style="width:@item.PerSatis.ToString()%"></div>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-primary">@item.PerSatis %</span></td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

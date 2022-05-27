@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Ornek";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+<link href="~/Content/MyCss/LoGOOOO.css" rel="stylesheet" />
+<link rel="icon" href="~/Bootstrap/dist/assets/images/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="~/Bootstrap/dist/assets/css/style.css">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<div style="height:100%; background-image: url('../../Bootstrap/dist/assets/images/slider/photo_bg.jpg'); background-repeat: no-repeat; background-size: 100%; ">
+    <div id="login-form">
+        <input type="radio" checked id="login" name="switch" class="hide">
+        <input type="radio" id="signup" name="switch" class="hide">
+        <div>
+            <ul class="form-header">
+                <li><label for="login"><i class="fa fa-lock"></i> Giriş Yap</label for="login"></li>
+                <li><label for="signup"><i class="fa fa-credit-card"></i> Üye Ol</label></li>
+            </ul>
+        </div>
+
+        <div class="section-out">
+            <section class="login-section">
+                <div class="login" style="justify-content:center; align-items:center; display:flex">
+                    <ul class="ul-list">
+                        <br />
+                        <li style="display:inline-flex;"><input style="height:40px; width:250px;" type="email" placeholder="Mail Adresiniz.." class="form-control" /><span class="icon"><i class="fa fa-user"></i></span></li>
+                        <li style="display:inline-flex;"><input style="height:40px; width:250px;" type="password" placeholder="Şifreniz.." class="form-control" /><span class="icon"><i class="fa fa-lock"></i></span></li>
+                        <br />
+                        <li><input type="checkbox" id="check1"> <label for="check1">Beni Hatırla</label>  <a href="#" style="float:right"> Şifreni mi Unuttun ? </a></li>
+                        <br />
+                        <button class="btn btn-primary">GİRİŞ YAP</button>
+                    </ul>
+                </div>
+            </section>
+            <section class="signup-section">
+                <div class="login" style="justify-content:center; align-items:center; display:flex">
+
+                    <ul class="ul-list">
+                        <li>
+                            <div style="display:inline-flex"><input style="height:40px; width:250px;" type="email" placeholder="Mail Adresiniz.." class="form-control" /><span class="icon"><i class="fa fa-user"></i></span></div>
+                            <div style="display:block"></div>
+                        </li>
+                        <li>
+                            <div style="display:inline-flex"><input style="height:40px; width:250px;" type="password" placeholder="Şifreniz.." class="form-control" /><span class="icon"><i class="fa fa-lock"></i></span></div>
+                            <div style="display:block"></div>
+                        </li>
+                        <li>
+                            <div style="display:inline-flex"><input style="height:40px; width:250px;" type="date" class="form-control" /><span class="icon"><i class="fa fa-birthday-cake"></i></span></div>
+                            <div style="display:block"></div>
+                        </li>
+                        <li><input type="checkbox" id="check1"> <label for="check1"><a href="#">Üyelik Sözleşmesi</a>'ni kabul ediyorum</label></li>
+                        <button class="btn btn-primary">ÜYE OL</button>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+    </div>
+</div>
+
+
+

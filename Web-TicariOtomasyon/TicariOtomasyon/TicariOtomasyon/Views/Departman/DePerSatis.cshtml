@@ -1,0 +1,50 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<Satislar>
+@{
+    ViewBag.Title = "DePerSatis";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 style="display:block;">Personel Satış Detay</h3>
+<div class="alert alert-primary" role="alert"> Personel Adı: @ViewBag.pAds</div>
+<div class="container" style="padding:0px;">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-xl-8" style="min-width:100%;">
+                <div class="card">
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" >Müşteri Fotoğraf</th>
+                                    <th scope="col">Müşteri Adı / Soyadı</th>
+                                    <th scope="col">Ürün Foroğtaf</th>
+                                    <th scope="col">Ürün Adı</th>
+                                    <th scope="col">Ürün Adet</th>
+                                    <th scope="col">Toplam Fiyat</th>
+                                    <th scope="col">Satış Tarih</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td style="vertical-align:middle;"><img src="@item.Musteriler.MusteriFoto" width="50" height="50" class="rounded-circle my-n1"></td>
+                                    <td style="vertical-align:middle;">@item.Musteriler.MusteriAD @item.Musteriler.MusteriSoyad</td>
+                                    <td style="vertical-align:middle; text-align:center"><img src="@item.Urunlerim.UrunFoto" width="50" height="50" class="rounded-circle my-n1"></td>
+                                    <td style="vertical-align:middle;">@item.Urunlerim.UrunAd</td>
+                                    <td style="vertical-align:middle; text-align:center">@item.SatisAdet</td>
+                                    <td style="vertical-align:middle; text-align:center">@item.SatisToplamFiyat</td>
+                                    <td style="vertical-align:middle; text-align:center">@item.SatisTarihi.ToString("dd/MM/yyyy")</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "QR";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm("QR", "QR", FormMethod.Post))
+    {
+        <input type="text" name="kod" />
+        <input type="submit" value="QR kod oluştur" />
+    }
+    <br />
+    @if (ViewBag.qr != null)
+    {
+        <img src="@ViewBag.qr" style="width:400px; height:400px;" alt="" />
+    }
+</div>
+

@@ -1,0 +1,45 @@
+﻿@model TicariOtomasyon.Models.Concrete.FaturaIcerik
+@{
+    ViewBag.Title = "FIcerğiEkle";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h3 style="display:block;">Fatura İçeriği Ekle</h3>
+@using (@Html.BeginForm("FIcerğiEkle", "Fatura", FormMethod.Post))
+{
+    <div class="auth-content">
+        <hr />
+        <div class="form-group" style="max-width:600px; margin:0 auto;">
+            <div style="width:auto; padding:5px 0px;">
+                @Html.Label("Ürün Adı", new { @class = "text-c-blue", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.FaturaAcıklama, new { @class = "form-control", @style = "background-color:white;" })
+            </div>
+            <div style="width:auto; padding:5px 0px;">
+                @Html.Label("Miktar", new { @class = "text", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.FaturaMiktar, new { @class = "form-control", @style = "background-color:white;" })
+
+            </div>
+            <div style="width:auto; padding:5px 0px;">
+                @Html.Label("Birim Fiyat", new { @class = "text", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.TextBoxFor(x => x.FaturaBirimFiyat, new { @class = "form-control", @style = "background-color:white;" })
+
+            </div>
+            <div style="width:auto; padding:5px 0px;">
+                @Html.Label("Fatura Sıri No", new { @class = "text", @style = "color:darkblue;" })
+            </div>
+            <div>
+                @Html.DropDownListFor(x => x.FaturaID, (List<SelectListItem>)ViewBag.fList, new { @class = "form-control", @style = "background-color:white;" })
+            </div>
+            <div style="margin:15px 0px">
+                <button class="btn btn-success">Ekle</button>
+            </div>
+        </div>
+    </div>
+}
+

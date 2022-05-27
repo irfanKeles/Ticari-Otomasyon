@@ -1,0 +1,52 @@
+﻿@using TicariOtomasyon.Models.Concrete
+@model List<Musteriler>
+
+@foreach (var item in Model)
+{
+    @Html.Hidden(item.MusteriID.ToString())
+    <div class="card-body text-center bg-primary rounded-top">
+        <div class="user-box">
+            <img src="@item.MusteriFoto" alt="user avatar">
+        </div>
+        <h5 class="mb-1 text-white">@item.MusteriAD @item.MusteriSoyad</h5>
+    </div>
+    <div class="card-body">
+        <ul class="list-group shadow-none">
+            <li class="list-group-item">
+                <div class="list-icon">
+                    <i class="fa fa-phone-square"></i>
+                </div>
+                <div class="list-details">
+                    <span style="display:block;">@item.MusteriTelNo</span>
+                    <small>Telefon Numarası</small>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="list-icon">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <div class="list-details">
+                    <span style="display:block;">@item.MusteriMail</span>
+                    <small>Mail Adresi</small>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="list-icon">
+                    <i class="fa fa-venus-mars"></i>
+                </div>
+                <div class="list-details">
+                    @if (item.Cinsiyet != true)
+                    {
+                        <span class="badge badge-danger" style="display:block;">Kadın</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-primary" style="display:block;">Erkek</span>
+                    }
+
+                    <small>Cinsiyet</small>
+                </div>
+            </li>
+        </ul>
+    </div>
+}
